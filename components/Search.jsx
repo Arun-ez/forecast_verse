@@ -10,6 +10,7 @@ import WeatherInfo from './WeatherInfo'
 const Search = () => {
 
     const input_ref = useRef(null);
+    const scroller_pointer_ref = useRef(null);
     const [unit, set_unit] = useState('metric');
     const [input, set_input] = useState("");
     const [translate, set_translate] = useState('translate-x-0');
@@ -66,17 +67,14 @@ const Search = () => {
     }, [])
 
     return (
-
-
         <div>
-
             <div className='flex justify-center flex-col md:flex-col lg:flex-row'>
 
                 <div className='w-[100%] flex flex-col gap-2 p-10'>
-                    <div className='bg-sky-100 flex w-[100%]'>
+                    <div className='bg-sky-100 flex w-[100%] rounded-xl overflow-hidden'>
                         <input ref={input_ref} className='border-1 bg-sky-100 p-5 w-[100%] outline-none' type="text" placeholder='Enter City Name' />
-                        <button className='p-6'> <BsArrowRightShort className='text-3xl text-slate-600 hover:text-stone-900' onClick={() => { search(input_ref.current.value) }} /> </button>
-                        <button className='p-6 bg-slate-300'> <HiOutlineLocationMarker onClick={location_handler} /> </button>
+                        <button className='p-6' onClick={() => { search(input_ref.current.value) }}> <BsArrowRightShort className='text-3xl text-slate-600 hover:text-stone-900' /> </button>
+                        <button className='p-6 bg-slate-300 hover:bg-slate-400 transition-all duration-75' onClick={location_handler} > <HiOutlineLocationMarker /> </button>
                     </div>
 
                     <div className='w-[100%]'>
@@ -91,7 +89,7 @@ const Search = () => {
                 <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 w-[100%] p-10 select-none'>
 
                     <div
-                        className='flex justify-center flex-col items-center bg-slate-400 p-4 gap-2 cursor-pointer'
+                        className='flex justify-center flex-col items-center bg-slate-400 p-4 gap-2 cursor-pointer rounded-xl'
                         onClick={() => { search("Kolkata") }}
                     >
                         <GiIndianPalace className='text-4xl' />
@@ -103,7 +101,7 @@ const Search = () => {
                     </div>
 
                     <div
-                        className='flex justify-center flex-col items-center bg-slate-400 p-4 gap-2 cursor-pointer'
+                        className='flex justify-center flex-col items-center bg-slate-400 p-4 gap-2 cursor-pointer rounded-xl'
                         onClick={() => { search("New York") }}
                     >
                         <FaFlagUsa className='text-4xl' />
@@ -115,12 +113,12 @@ const Search = () => {
                     </div>
 
                     <div
-                        className='flex justify-center flex-col items-center bg-slate-400 p-4 gap-2 cursor-pointer'
-                        onClick={() => { search("Tokyo") }}
+                        className='flex justify-center flex-col items-center bg-slate-400 p-4 gap-2 cursor-pointer rounded-xl'
+                        onClick={() => { search("Toyota") }}
                     >
                         <GiJapaneseBridge className='text-4xl' />
                         <div className='text-center '>
-                            <h1 className='font-bold'> Tokyo </h1>
+                            <h1 className='font-bold'> Toyota </h1>
                             <p> Japan </p>
                         </div>
 
@@ -129,7 +127,8 @@ const Search = () => {
                 </div>
             </div>
 
-            <WeatherInfo location={input} unit={unit} />
+            <div ref={scroller_pointer_ref}></div>
+            <WeatherInfo location={input} unit={unit} scrollTo={scroller_pointer_ref} />
 
         </div>
     )

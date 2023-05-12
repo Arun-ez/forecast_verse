@@ -31,7 +31,7 @@ const formatCurrent = (data, unit) => {
         wind_speed: Math.round(wind_speed) + "km/h"
     }
 
-    let hourly = data.hourly.slice(1, 6).map(({ dt, temp, pressure, feels_like, humidity, wind_speed, weather }) => {
+    let hourly = data.hourly.slice(1, 8).map(({ dt, temp, pressure, feels_like, humidity, wind_speed, weather }) => {
         return {
             hour: formatTimezone(dt, data.timezone, 'hh:mm a'),
             temp: Math.round(temp) + (unit === "metric" ? "°C" : "°F"),
@@ -45,7 +45,7 @@ const formatCurrent = (data, unit) => {
     });
 
 
-    let daily = data.daily.slice(1, 6).map(({ dt, temp, pressure, feels_like, humidity, wind_speed, weather }) => {
+    let daily = data.daily.slice(1, 8).map(({ dt, temp, pressure, feels_like, humidity, wind_speed, weather }) => {
         return {
             day: formatTimezone(dt, data.timezone, 'ccc'),
             temp: Math.round(temp.max) + (unit === "metric" ? "°C" : "°F"),
