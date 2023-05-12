@@ -53,6 +53,7 @@ const Search = () => {
     const search = (city) => {
         input_ref.current.value = "";
         set_input(city);
+        input_ref.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
     }
 
     useEffect(() => {
@@ -70,7 +71,7 @@ const Search = () => {
         <div>
             <div className='flex justify-center flex-col md:flex-col lg:flex-row'>
 
-                <div className='w-[100%] flex flex-col gap-2 p-10'>
+                <div className='w-[100%] flex flex-col gap-2 p-8'>
                     <div className='bg-sky-100 flex w-[100%] rounded-xl overflow-hidden'>
                         <input ref={input_ref} className='border-1 bg-sky-100 p-5 w-[100%] outline-none' type="text" placeholder='Enter City Name' />
                         <button className='p-6' onClick={() => { search(input_ref.current.value) }}> <BsArrowRightShort className='text-3xl text-slate-600 hover:text-stone-900' /> </button>
@@ -86,7 +87,7 @@ const Search = () => {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 w-[100%] p-10 select-none'>
+                <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 w-[100%] p-8 select-none'>
 
                     <div
                         className='flex justify-center flex-col items-center bg-slate-400 p-4 gap-2 cursor-pointer rounded-xl'
