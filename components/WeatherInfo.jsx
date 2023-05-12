@@ -103,7 +103,7 @@ const WeatherInfo = ({ location, unit, scrollTo }) => {
 
                             <div className='flex flex-col md:flex-row lg:flex-row w-[100%] my-5'>
                                 <div className='flex w-[100%] flex-col items-center'>
-                                    <h1 className='font-bold text-xl'> Hourly </h1>
+                                    <h1 className='font-bold text-xl'> Hourly Forecast </h1>
                                     <div className="flex flex-col gap-4 w-[90%] my-6">
                                         {data.hourly.map(({ hour, humidity, temp, icon }, idx) => {
                                             return (
@@ -123,7 +123,7 @@ const WeatherInfo = ({ location, unit, scrollTo }) => {
                                     </div>
                                 </div>
                                 <div className='flex w-[100%] flex-col items-center'>
-                                    <h1 className='font-bold text-xl'> Daily </h1>
+                                    <h1 className='font-bold text-xl'> Daily Forecast </h1>
                                     <div className="flex flex-col gap-4 w-[90%] my-6">
                                         {data.daily.map(({ day, humidity, temp, icon }, idx) => {
                                             return (
