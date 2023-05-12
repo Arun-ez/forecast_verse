@@ -10,32 +10,13 @@ import WeatherInfo from './WeatherInfo'
 const Search = () => {
 
     const input_ref = useRef(null);
-    const [unit, set_unit] = useState('°F');
+    const [unit, set_unit] = useState('metric');
     const [input, set_input] = useState("");
-    const [data_state, set_data_state] = useState('current');
     const [translate, set_translate] = useState('translate-x-0');
     const [date_and_time, set_date_and_time] = useState(". . .");
 
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-    const types = [
-        {
-            name: "Current",
-            active_class: "bg-sky-500 px-4 py-2 text-white rounded-3xl",
-            onClick: () => { set_data_state("Current") }
-        },
-        {
-            name: "Daily",
-            active_class: "bg-sky-500 px-4 py-2 text-white rounded-3xl",
-            onClick: () => { set_data_state("Daily") }
-        },
-        {
-            name: "Hourly",
-            active_class: "bg-sky-500 px-4 py-2 text-white rounded-3xl",
-            onClick: () => { set_data_state("Hourly") }
-        }
-    ]
 
     const getDateAndTime = () => {
         let date = new Date();
@@ -51,11 +32,11 @@ const Search = () => {
 
     const toggle_unit = () => {
 
-        if (unit === "°F") {
-            set_unit("°C");
+        if (unit === "metric") {
+            set_unit("imperial");
             set_translate('translate-x-10');
         } else {
-            set_unit("°F")
+            set_unit("metric")
             set_translate('translate-x-0');
         }
     }
@@ -69,12 +50,12 @@ const Search = () => {
     }
 
     const search = (city) => {
+        input_ref.current.value = "";
         set_input(city);
     }
 
     useEffect(() => {
         set_date_and_time(getDateAndTime())
-        set_data_state('Current');
         location_handler();
 
         let intervalId = setInterval(() => {
@@ -103,7 +84,7 @@ const Search = () => {
                     </div>
 
                     <div className='bg-slate-400 w-[80px] h-10 rounded-3xl flex items-center p-1 cursor-pointer' onClick={toggle_unit}>
-                        <div className={`${translate} transition-transform duration-500 flex justify-center items-center h-8 w-8 bg-slate-800 rounded-full text-white select-none`}> {unit} </div>
+                        <div className={`${translate} transition-transform duration-500 flex justify-center items-center h-8 w-8 bg-slate-800 rounded-full text-white select-none`}> {unit === 'metric' ? "°C" : "°F"} </div>
                     </div>
                 </div>
 
@@ -148,17 +129,7 @@ const Search = () => {
                 </div>
             </div>
 
-            <div className='flex w-[100%] justify-center items-center gap-16'>
-                {types.map(({ name, active_class, onClick }, id) => {
-                    return (
-                        <p key={id} className={`cursor-pointer ${name === data_state ? active_class : ""}`} onClick={onClick}>
-                            {name}
-                        </p>
-                    )
-                })}
-            </div>
-
-            <WeatherInfo location={input} type={data_state} unit={unit} />
+            <WeatherInfo location={input} unit={unit} />
 
         </div>
     )

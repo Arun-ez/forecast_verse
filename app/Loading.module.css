@@ -1,0 +1,110 @@
+.spinner {
+    box-sizing: border-box;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 50px;
+}
+
+.bar {
+    display: inline-block;
+    width: 8px;
+    height: 32px;
+    margin: 0 4px;
+    border-radius: 4px;
+    animation: spinner 1s ease-in-out infinite;
+}
+
+.bar1 {
+    background-color: #3182CE;
+}
+
+.bar2 {
+    background-color: #4299E1;
+    animation-delay: 0.125s;
+}
+
+.bar3 {
+    background-color: #63B3ED;
+    animation-delay: 0.25s;
+}
+
+.bar4 {
+    background-color: #90CDF4;
+    animation-delay: 0.375s;
+}
+
+.bar5 {
+    background-color: #BEE3F8;
+    animation-delay: 0.5s;
+}
+
+.bar6 {
+    background-color: #f5f5f5;
+    animation-delay: 0.625s;
+}
+
+.bar7 {
+    background-color: #dcdcdc;
+    animation-delay: 0.75s;
+}
+
+.bar8 {
+    background-color: #a6a6a6;
+    animation-delay: 0.875s;
+}
+
+@keyframes spinner {
+
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-24px);
+    }
+}
+
+.image {
+    margin-top: 80px;
+}
+
+.button {
+    color: white;
+    border: none;
+    padding: 20px;
+    width: 420px;
+    font-size: large;
+    font-weight: 500;
+    border-radius: 15px;
+    background-color: black;
+    transition: all 0.4s;
+    cursor: pointer;
+    letter-spacing: 1px;
+    margin-top: 50px;
+}
+
+.button:hover {
+    opacity: 90%;
+    letter-spacing: 3px;
+    transform: scale(1.05);
+}
+
+@media all and (min-width:0px) and (max-width:700px) {
+
+    .h1 {
+        font-size: 1.5em;
+    }
+
+    .image {
+        width: 250px;
+        height: 80px;
+
+    }
+
+    .button {
+        width: 80%;
+        font-size: medium;
+    }
+}
