@@ -21,6 +21,7 @@ const WeatherInfo = ({ location, unit, scrollTo }) => {
                 if (data.failed) {
                     set_loading(false);
                     set_error(data.failed);
+                    scrollTo.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
                     return;
                 }
 
@@ -34,6 +35,7 @@ const WeatherInfo = ({ location, unit, scrollTo }) => {
                 } catch (error) {
                     set_error("Failed to catch weather");
                     set_loading(false);
+                    scrollTo.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
                 }
             })
         } else if (typeof location === 'object') {
@@ -49,10 +51,12 @@ const WeatherInfo = ({ location, unit, scrollTo }) => {
             }).catch(() => {
                 set_error("Failed to catch weather");
                 set_loading(false);
+                scrollTo.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
             })
         } else {
             set_loading(false);
-            set_error("Enter a city name or Give location permission")
+            set_error("Enter a city name or Give location permission");
+            scrollTo.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
         }
 
     }, [location, unit])

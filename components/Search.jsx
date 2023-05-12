@@ -53,7 +53,6 @@ const Search = () => {
     const search = (city) => {
         input_ref.current.value = "";
         set_input(city);
-        input_ref.current.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
     }
 
     useEffect(() => {
