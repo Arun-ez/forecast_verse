@@ -10,7 +10,7 @@
 
 https://forecastverse.vercel.app/
 
-![App Screenshot](https://arunshaw.vercel.app/static/media/forecastverse_1.916a409bb214b2e86001.png)
+![App Screenshot](https://forecastverse.vercel.app/thumbs/forecastverse_3.png)
 ## Tech Stack
 
 - JavaScript, NextJs, Tailwind CSS, OpenWeather API
